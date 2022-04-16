@@ -1,9 +1,10 @@
 pipeline{
     
-    agent {label 'linagent'}
+    
     
     stages{
         stage('build'){
+	agent {label 'linagent'}
         steps{
             sh 'echo hello'
             sh 'git clone https://github.com/sneha0302/mvnwebapp-1.git'
@@ -12,7 +13,7 @@ pipeline{
 	sh 'docker run gesellix/trufflehog --json --regex https://github.com/sneha0302/mvnwebapp-1.git > result'
 	sh 'cat result'
 	        }
-            
+        
             
         }
         
